@@ -1,0 +1,5 @@
+*/**
+*.*
+!hdmitest.xise
+!.gitignore
+!filter.filter

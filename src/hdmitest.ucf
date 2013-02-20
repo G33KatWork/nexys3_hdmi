@@ -1,0 +1,59 @@
+###########################################
+# Setting VCCAUX for Spartan 6 TMDS
+###########################################
+CONFIG VCCAUX  = 3.3;
+
+######## clock inputs
+# 100 MHz clock input
+NET "CLK100" LOC = V10;
+NET "CLK100" IOSTANDARD = LVCMOS33;
+NET "CLK100" TNM_NET = "CLK100";
+TIMESPEC TS_clk = PERIOD "CLK100" 100 MHz HIGH 50 % PRIORITY 255;
+NET "CLK100" CLOCK_DEDICATED_ROUTE = FALSE;
+
+# Buttons
+Net "btns" LOC = B8 | IOSTANDARD = LVCMOS33; #Bank = 0, pin name = IO_L33P, Sch name = BTNS
+#Net "btnu" LOC = A8 | IOSTANDARD = LVCMOS33; #Bank = 0, pin name = IO_L33N, Sch name = BTNU
+#Net "btnl" LOC = C4 | IOSTANDARD = LVCMOS33; #Bank = 0, pin name = IO_L1N_VREF, Sch name = BTNL
+Net "btnd" LOC = C9 | IOSTANDARD = LVCMOS33; #Bank = 0, pin name = IO_L34N_GCLK18, Sch name = BTND
+#Net "btnr" LOC = D9 | IOSTANDARD = LVCMOS33; # Bank = 0, pin name = IO_L34P_GCLK19, Sch name = BTNR
+
+# VGA Connector
+NET "vgaRed<0>" LOC = U7 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L43P, Sch name = RED0
+NET "vgaRed<1>" LOC = V7 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L43N, Sch name = RED1
+NET "vgaRed<2>" LOC = N7 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L44P, Sch name = RED2
+NET "vgaGreen<0>" LOC = P8 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L44N, Sch name = GRN0
+NET "vgaGreen<1>" LOC = T6 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L45P, Sch name = GRN1
+NET "vgaGreen<2>" LOC = V6 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L45N, Sch name = GRN2
+NET "vgaBlue<0>" LOC = R7 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L46P, Sch name = BLU1
+NET "vgaBlue<1>" LOC = T7 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L46N, Sch name = BLU2
+
+NET "Hsync" LOC = N6 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L47P, Sch name = HSYNC
+NET "Vsync" LOC = P7 | IOSTANDARD = LVCMOS33; # Bank = 2, pin name = IO_L47N, Sch name = VSYNC
+
+
+#TDMS Output
+
+#BLUE
+NET "TX0_TMDS_P[0]" LOC = C5;
+NET "TX0_TMDS_P[0]" IOSTANDARD = TMDS_33;
+NET "TX0_TMDS_N[0]" LOC = A5;
+NET "TX0_TMDS_N[0]" IOSTANDARD = TMDS_33;
+
+#RED
+NET "TX0_TMDS_P[1]" LOC = B6;
+NET "TX0_TMDS_P[1]" IOSTANDARD = TMDS_33;
+NET "TX0_TMDS_N[1]" LOC = A6;
+NET "TX0_TMDS_N[1]" IOSTANDARD = TMDS_33;
+
+#GREEN
+NET "TX0_TMDS_P[2]" LOC = C7;
+NET "TX0_TMDS_P[2]" IOSTANDARD = TMDS_33;
+NET "TX0_TMDS_N[2]" LOC = A7;
+NET "TX0_TMDS_N[2]" IOSTANDARD = TMDS_33;
+
+#CLOCK
+NET "TX0_TMDS_N[3]" LOC = C11;
+NET "TX0_TMDS_N[3]" IOSTANDARD = TMDS_33;
+NET "TX0_TMDS_P[3]" LOC = D11;
+NET "TX0_TMDS_P[3]" IOSTANDARD = TMDS_33;
